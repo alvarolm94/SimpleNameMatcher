@@ -104,7 +104,7 @@ Here is a summarized list of the steps the algorithm takes in each matching proc
 
 **1.** Firstly, it cleans up both names. They are converted to lower case, trimmed, and all the redundant spaces are removed.
 
-**2.** Then, the bigger name (the one with more letters) is selected and used to calculate the impact factor*(**\***)*. Note that only letters count as information. The separation characters, such as hyphens or blank spaces, do not count as information units. 
+**2.** Then, the bigger name (the one with more letters) is selected and used to calculate the impact factor(**\***). Note that only letters count as information. The separation characters, such as hyphens or blank spaces, do not count as information units. 
 
 **3.** If the weight of the difference of length (in letters) between the names reaches the threshold, the algorithm stops to save time and avoid unnecessary operarions.
 
