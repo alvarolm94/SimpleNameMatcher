@@ -98,7 +98,7 @@ In addition to this, another important thing is considered in the matching proce
 
 So, the weight or impact that an individual change in a name has depends on its type and the length of the name. 
 
-Now we now the theory, but how is this calculated in the algorithm?
+Now we know the theory, but how is this calculated in the algorithm?
 
 Here is a summarized list of the steps the algorithm takes in each matching process:
 
