@@ -1,4 +1,4 @@
-package com.simplenamematcher;
+package com.simplenamematcher.main;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
