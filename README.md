@@ -81,7 +81,7 @@ Please, have in mind this two points:
 
 ## HOW DOES IT WORK?
 
-In a nutshell, the algorithm finds out each one of the differences between the two names and assigns it an impact. Each type of difference has a weight, depending on how significant it is for us. This weights have been adjusted by measuring the impact that each type of change in a name had in different people I surveyed.
+In a nutshell, the algorithm finds out each one of the differences between the two names and assigns them an impact. Each type of difference has a weight, depending on how significant it is for us. This weights have been adjusted by measuring the impact that each type of change in a name had in different people I surveyed.
 
 It's not the same changing a letter in a name and adding a separation, we all can agree that the first one weights more, has more impact. The first change affects the information in the name while the other just affects the way in which words are separated. It is common to see the same name written with different separations for its words, as people don't consider this that much important. For example, *Andrés De La Guardia* and *Andrés deLaGuardia*. Or *Philip-Andrew Johnson* and *Philip Andrew Johnson*. Converting, for instance, *Arthur Bald* into *Arthur Bold* has a lot more impact than the examples above. 
 
