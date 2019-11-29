@@ -102,16 +102,16 @@ Now we now the theory, but how is this calculated in the algorithm?
 
 Here is a summarized list of the steps the algorithm takes in each matching process:
 
-1. Firstly, it cleans up both names. They are converted to lower case, trimmed, and all the redundant spaces are removed.
+**1.** Firstly, it cleans up both names. They are converted to lower case, trimmed, and all the redundant spaces are removed.
 
-2. Then the bigger name (the one with more letters) is selected and used to calculate the impact factor(1). Note that only letters count as information. The separation characters, such as hyphens or blank spaces, do not count as information units. 
+**2.** Then, the bigger name (the one with more letters) is selected and used to calculate the impact factor(**\***). Note that only letters count as information. The separation characters, such as hyphens or blank spaces, do not count as information units. 
 
-3. If the weight of the difference of length (in letters) between the names reaches the threshold, the algorithm stops to save time and avoid unnecessary operarions.
+**3.** If the weight of the difference of length (in letters) between the names reaches the threshold, the algorithm stops to save time and avoid unnecessary operarions.
 
-4. A modified version of the Minimum Edit Distance (or Levenshtein Distance) algorithm is used to find the differences between the names. The dinamic programming approach was chosen for this, so in each iteration the algorithm fills a cell in a matrix that represents all the subproblems. The difference with the classic version of the algorithm is that each cell stores a distance value calculated taking into account the weights described above. So if the characters are the same, but have different diacritics, or the character that doesn't match is a separator, the weight of that change is calculated and added.
+**4.** A modified version of the Minimum Edit Distance (or Levenshtein Distance) algorithm is used to find the differences between the names. The dinamic programming approach was chosen for this, so in each iteration the algorithm fills a cell in a matrix that represents all the subproblems. The difference with the classic version of the algorithm is that each cell stores a distance value calculated taking into account the weights described above. So if the characters are the same, but have different diacritics, or the character that doesn't match is a separator, the weight of that change is calculated and added.
 For each row of the matrix, the minimum distance value is stored, so that if that value makes the threshold to be exceeded the algorithm stops to save time and returns a negative result. 
 
-5. The final distance (the one at the bottom right corner) is substracted to 100 and rounded to avoid unnecessary decimals. The result is returned. 
+**5.** The final distance (the one at the bottom right corner) is substracted to 100 and rounded to avoid unnecessary decimals. The result is returned. 
 
 
-
+(**\***) This is the approach I chose, to take the bigger name and measure the impact of the changes necessary to transform it into the smaller one, calculating the impact factor with its length. Nevertheless, the opposite strategy could be chosen: to take the smaller name and transform it into the bigger one. I chose the first one because the impact factor would be a little smaller when choosing the bigger name, making the algorithm a little more tolerant to changes.
