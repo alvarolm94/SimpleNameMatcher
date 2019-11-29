@@ -92,7 +92,7 @@ So, the types of changes considered in the algorithm are these:
 - **Change in Diacritic**: For example, *á* -> *a* or *ü* -> *u*.
 - **Full separation**: When two words that are together get completely separated. For example, *Thomas laGarde* -> *Thomas la Garde*.
 - **Half separation**: When two words that are together get separated with a milder separator, such as a hyphen, or when a mild separator is converted to a strong separator, like a blank space. For example, *Thomas laGarde* -> *Thomas la-Garde* or *Thomas la-Garde* -> *Thomas la Garde*.
--**Change in letter**: A substitution, insertion or deletion in a letter. For example, *Andrea Smith* -> *Andrew Smith* or *Ronaldo Reagan* -> *Ronald Reagan*.
+- **Change in letter**: A substitution, insertion or deletion in a letter. For example, *Andrea Smith* -> *Andrew Smith* or *Ronaldo Reagan* -> *Ronald Reagan*.
 
 In addition to this, another important thing is considered in the matching process: the impact or weight of each individual change in a name depends on the length of the name (the amount of information that the name has). The longer a name is, the less significant a change in it is. It's not the same changing a letter in *Ri Wun Ho*, a small name, and in *Pablo Emilio Durán Fernández del Álamo*; in the first case the change affects a significant portion of the information while in the second it doesn't. To see it with another perspective: if two names have more information (more letters) that match, the percentage of similarity should be bigger. 
 
