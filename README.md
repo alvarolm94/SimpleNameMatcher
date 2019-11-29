@@ -20,7 +20,7 @@ Hope it's useful!
 
 1. Download the jar file located in the repository. It contains the last version of the library, ready to use.
 2. Import it to your project.
-3. Create a **SimpleNameMatcher** object, and just call the method *compareNames(String name1, String name2)* or *compareNames(String name1, String name2, dobule threshold)*. It will return a double between *0* and *100* representing the score or percentage of similarity. The threshold is the minimum percentage required to consider the names similar. If a threshold is specified, the matching process will end if the threshold is reached, returning *0* and saving computing time. If not specified, the default threshold (0) will be used for the matching. 
+3. Create a **SimpleNameMatcher** object, and just call the method *compareNames(String name1, String name2)* or *compareNames(String name1, String name2, double threshold)*. It will return a double between *0* and *100* representing the score or percentage of similarity. The threshold is the minimum percentage required to consider the names similar. If a threshold is specified, the matching process will end if the threshold is reached, returning *0* and saving computing time. If not specified, the default threshold (0) will be used for the matching. 
 
 **Example 1:**  
 ```java
