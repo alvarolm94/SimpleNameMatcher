@@ -1,11 +1,11 @@
-package Main;
+package com.simplenamematcher;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.Normalizer;
+import com.simplenamematcher.exceptions.NonPermittedSymbolException;
+import com.simplenamematcher.exceptions.ThresholdOutOfRangeException;
 
-import Exceptions.NonPermittedSymbolException;
-import Exceptions.ThresholdOutOfRangeException;
 
 //Created by Álvaro López-Müller 2019.
 
