@@ -3,8 +3,6 @@ package com.simplenamematcher.main;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.Normalizer;
-import java.util.Locale;
-
 import com.simplenamematcher.exceptions.NonPermittedSymbolException;
 import com.simplenamematcher.exceptions.ThresholdOutOfRangeException;
 
@@ -22,7 +20,7 @@ public class SimpleNameMatcher {
 	public double compareNames(String name1, String name2) throws NonPermittedSymbolException {
 		
 		//Avoids non-latin names and forbidden characters. 
-		if(!name1.matches("^[\\p{IsLatin}|\\-| '|´|\\.|,|’|‘]*$") || !name2.matches("^[\\p{IsLatin}|\\-| '|´|\\.|,|’|‘]*$")) {
+		if(!name1.matches("^[\\p{IsLatin}|\\-\\‒\\–\\—\\―\\-\\‑\\⁃| '|´|\\.|,|’|‘]*$") || !name2.matches("^[\\p{IsLatin}|\\-\\‒\\–\\—\\―\\-\\‑\\⁃| '|´|\\.|,|’|‘]*$")) {
 			NonPermittedSymbolException e = new NonPermittedSymbolException();
 			throw e;
 		}
@@ -324,6 +322,7 @@ public class SimpleNameMatcher {
 
 		cleanName = cleanName.replaceAll("\\n", ""); 
 		cleanName = cleanName.replaceAll("\\s{2,}", " ");
+		cleanName = cleanName.replaceAll("[\\‒\\–\\—\\―\\-\\‑\\⁃]", "-");
 		cleanName = cleanName.trim();
 		int lengthBeforeConversion = cleanName.length();
 		cleanName = cleanName.toLowerCase();
