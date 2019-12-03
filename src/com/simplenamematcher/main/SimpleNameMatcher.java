@@ -3,6 +3,8 @@ package com.simplenamematcher.main;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.Normalizer;
+import java.util.Locale;
+
 import com.simplenamematcher.exceptions.NonPermittedSymbolException;
 import com.simplenamematcher.exceptions.ThresholdOutOfRangeException;
 
@@ -18,7 +20,7 @@ public class SimpleNameMatcher {
 	
 	
 	public double compareNames(String name1, String name2) throws NonPermittedSymbolException {
-	
+		
 		//Avoids non-latin names and forbidden characters. 
 		if(!name1.matches("^[\\p{IsLatin}|\\-| '|´|\\.|,|’|‘]*$") || !name2.matches("^[\\p{IsLatin}|\\-| '|´|\\.|,|’|‘]*$")) {
 			NonPermittedSymbolException e = new NonPermittedSymbolException();
@@ -323,7 +325,13 @@ public class SimpleNameMatcher {
 		cleanName = cleanName.replaceAll("\\n", ""); 
 		cleanName = cleanName.replaceAll("\\s{2,}", " ");
 		cleanName = cleanName.trim();
+		int lengthBeforeConversion = cleanName.length();
 		cleanName = cleanName.toLowerCase();
+		int lengthAfterConversion = cleanName.length();
+		
+		if(lengthAfterConversion > lengthBeforeConversion) { //Sometimes errors occur when converting characters with diacritics to lower case.
+			cleanName = fixToLowerCaseError(cleanName);
+		}
 
 		return cleanName;
 	}
@@ -331,7 +339,7 @@ public class SimpleNameMatcher {
 	private static char removeDiacritics(char c) {
 
 		String s = String.valueOf(c);
-		
+
 		s = Normalizer.normalize(s, Normalizer.Form.NFD);
 		s = s.replaceAll("[\\p{InCombiningDiacriticalMarks}]", "");
 
@@ -348,13 +356,13 @@ public class SimpleNameMatcher {
 
 	}
 	
-	static double min(double insert,double delete,double replace) { 
+	private double min(double insert,double delete,double replace) { 
         if (insert <= delete && insert <= replace) return insert; 
         if (delete <= insert && delete <= replace) return delete; 
         else return replace; 
     } 
 	
-	private static boolean isSeparator(char c) {
+	private boolean isSeparator(char c) {
 		
 		if(c == ' ' || c == '-') {
 			return true;
@@ -364,7 +372,7 @@ public class SimpleNameMatcher {
 		
 	}
 	
-	private static double round(double value, int places) {
+	private double round(double value, int places) {
 		if (places < 0) throw new IllegalArgumentException();
 
 		BigDecimal bd = new BigDecimal(value);
@@ -372,5 +380,24 @@ public class SimpleNameMatcher {
 		return bd.doubleValue();
 	}
 	
+	 private String fixToLowerCaseError(String s) {
+
+		 for(int i = 0; i < s.length(); i++) {
+
+			 char c = s.charAt(i);
+
+			 if(Character.toString(c).matches("\\p{InCombiningDiacriticalMarks}")) {
+
+				 StringBuilder sb = new StringBuilder(s);
+				 sb.deleteCharAt(i);
+				 s = sb.toString();
+				 i--;
+				 
+			 }
+			 
+		 }
+
+		 return s;
+	 }
 	
 }
